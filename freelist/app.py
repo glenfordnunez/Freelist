@@ -20,14 +20,16 @@ def scanwords():
     with open('freelist/data/text/CAMUS-Letranger.txt', 'rb') as f:
         for line in f:
             for word in line.split():
-                Ting[word.lower().decode('utf-8').strip('.,«»')] += 1
+                Ting[word.lower().decode('utf-8').strip('[].,«»:’’)(1234567890"').rstrip()] += 1
         return Ting
 
 def tocsv(w):
+
+    lan = 'FR'
     with open('freelist/data/text/cleanTing.csv', 'w', newline="") as csv_file:  
         writer = csv.writer(csv_file)
         for key, value in w.items():
-            writer.writerow([key, value])
+            writer.writerow([key, value, lan])
 
 
 scanwords()
@@ -35,5 +37,5 @@ tocsv(Ting)
 
 
 
-#print ("--- Start Point---")
-#print ({k: v for k, v in sorted(Ting.items(), key=lambda item: item[1], reverse=True )})
+print ("--- Start Point---")
+print ({k: v for k, v in sorted(Ting.items(), key=lambda item: item[0], reverse=True )})
