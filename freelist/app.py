@@ -1,9 +1,9 @@
-import math
 import os
 import sys
 import csv
-#import pdftotext
 from collections import defaultdict
+
+#import pdftotext
 
 
 def convertpdftotext():
@@ -20,6 +20,8 @@ def scanwords():
     with open('freelist/data/text/CAMUS-Letranger.txt', 'rb') as f:
         for line in f:
             for word in line.split():
+                # This is stripping all of the sympbols and numbers from each word in file. 
+                # Not sure if there is a more efficient way to do this. It seems fairly fast. 
                 allwords[word.lower().decode('utf-8').strip('[].,«»:’’)(1234567890"').rstrip()] += 1
         #return allwords
     
@@ -48,6 +50,6 @@ scanwords()
 tocsv(allwords)
 
 
-
-print ("--- Start Point---")
+# This is a test that prints all of the words and word count from the text file. 
+print ("--- Starting Point---")
 print ({k: v for k, v in sorted(allwords.items(), key=lambda item: item[0], reverse=True )})
