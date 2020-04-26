@@ -28,7 +28,6 @@ def convertpdftotext():
 
 def scanwords():
     # fileDir = os.path.dirname(os.path.realpath('__file__'))
-
     global allwords
     allwords = defaultdict(int)
     
@@ -48,7 +47,7 @@ def tocsv(w):
         writer = csv.writer(csv_file)
         for key, value in w.items():
             writer.writerow([key, value, lan])
-
+      
 
 
 
@@ -69,4 +68,4 @@ def printTest():
 convertpdftotext()
 scanwords()
 tocsv(allwords)
-#printTest()
+printTest()
